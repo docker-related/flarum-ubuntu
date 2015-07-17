@@ -61,7 +61,7 @@ password: $USER_PASSWORD
 Initialize Finished.Have Fun.
 EOF
 my_id=$$
-ps aux | grep -vE "grep|^USER.*PID" | awk '{print $2}' | grep -v "^my_id$" |while read pid
+ps aux | grep -vE "grep|^USER.*PID" | awk '{print $2}' | grep -v "^$my_id$" |while read pid
 do
 kill -9 ${pid} 2>/dev/null
 done
