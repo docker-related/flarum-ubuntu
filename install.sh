@@ -504,7 +504,7 @@ service nginx stop
 mv /www /www-$(date +%Y-%m-%d+%H%M)
 git clone --recursive https://github.com/flarum/flarum.git /www
 cd /www
-git checkout 76533e4096eb252974eed4d4f438c2cd012e1ea3
+# git checkout 76533e4096eb252974eed4d4f438c2cd012e1ea3
 chown -R $USER_NAME /www
 su -l $USER_NAME <<'CMD'
 . ~/.flarumrc

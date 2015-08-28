@@ -7,6 +7,11 @@ ENV HOME /root
 RUN apt-mark hold initscripts udev plymouth mountall
 RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
 
+RUN apt-get install -y --force-yes --no-install-recommends wget
+ADD sources.list.alicloud /
+RUN wget -qO- ipinfo.io | grep "country.*CN" && cp /sources.list.alicloud /etc/apt/sources.list
+RUN rm /sources.list.alicloud
+
 RUN apt-get update \
     && apt-get install -y --force-yes --no-install-recommends \
         openssh-server sudo vim \
