@@ -9,7 +9,7 @@ RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/i
 
 RUN apt-get install -y --force-yes --no-install-recommends wget
 ADD sources.list.alicloud /
-RUN wget -qO- ipinfo.io | grep "country.*CN" && cp /sources.list.alicloud /etc/apt/sources.list
+RUN wget -qO- ipinfo.io | grep "country.*CN" && cp /sources.list.alicloud /etc/apt/sources.list || return 0
 RUN rm /sources.list.alicloud
 
 RUN apt-get update \
